@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "PrimaryFont";
+  src: url("@/assets/primary.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "SecondaryFont";
+  src: url("@/assets/secondary.ttf") format("truetype");
+}
+
+@theme {
+  --font-primary: PrimaryFont, sans-serif;
+  --font-secondary: SecondaryFont, sans-serif;
+}
+
+body, html {
+  box-sizing: border-box;
+  background: #FFFFFF;
+}
