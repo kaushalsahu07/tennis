@@ -3,32 +3,27 @@ import "../index.css";
 import logo from "../assets/logo.svg";
 
 // Importing FontAwesome icons
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 // Importing GSAP for animations
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 export default function Nav() {
-
   // Initialize GSAP
   useGSAP(() => {
     const tl = gsap.timeline();
 
-    tl.to(".nav", {
-      duration: 1,
-      y: 95,
-      ease: "power2.inOut",
-    })
-
+    tl.set(".nav", { y: -100 })
+    .to(".nav", { duration: 0.5, y: 0, ease: "power2.inOut" });
   });
 
   // State to manage mobile menu open/close
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="nav relative -top-22 w-full border-b border-[#D8D8D8] bg-white">
+    <nav className="nav relative top-0 w-full border-b border-[#D8D8D8] bg-white">
       <div className="max-w-[60rem] mx-auto flex items-center justify-center h-18 px-4 md:px-8 md:h-22 relative">
         {/* Desktop: Three columns */}
         <div className="hidden md:flex flex-1">
@@ -61,7 +56,10 @@ export default function Nav() {
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
-          <FontAwesomeIcon className="w-10 h-10" icon={menuOpen ? faXmark : faBars} />
+          <FontAwesomeIcon
+            className="w-10 h-10"
+            icon={menuOpen ? faXmark : faBars}
+          />
         </button>
 
         {/* Mobile Menu: only render when open, fixed, smooth transition */}
